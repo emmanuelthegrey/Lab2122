@@ -45,5 +45,14 @@ public class HomeController {
 
 		return "home";
 	}
-	
+	@RequestMapping(value = "/order", method = RequestMethod.GET)
+	public String order(Model model, HttpServletRequest request) {
+		String[] fruits = request.getParameterValues("fruit");
+		
+		model.addAttribute("pizza", request.getParameter("pizza"));
+		model.addAttribute("fruits", fruits);
+		
+		return "orderProcess";
+	}
+
 }
